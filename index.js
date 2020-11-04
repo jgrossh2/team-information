@@ -56,6 +56,7 @@ const managerQuestions = () => {
             }
         },
     ]);
+    selectOption();
 };
 const selectOption = () => {
     return inquirer.prompt([
@@ -124,6 +125,7 @@ const engineerQuestions = () => {
             }
         },
     ]);
+    selectOption();
 };
 const internQuestions = () => {
     return inquirer.prompt([
@@ -180,4 +182,5 @@ const internQuestions = () => {
             }
         },
     ]);
+    selectOption();
 };

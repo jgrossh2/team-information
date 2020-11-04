@@ -20,14 +20,14 @@ const managerQuestions = () => {
             type: 'number',
             name: 'id',
             message: 'Please enter the employee ID.',
-            validate: idNumber => {
-                if (idNumber) {
-                    return true;
-                } else {
-                    console.log('Please enter an employee ID.');
-                    return false;
-                }
-            }
+            // validate: idNumber => {
+            //     if (idNumber) {
+            //         return true;
+            //     } else {
+            //         console.log('Please enter an employee ID.');
+            //         return false;
+            //     }
+            // }
         },
         {
             type: 'input',
@@ -76,14 +76,14 @@ const engineerQuestions = () => {
             type: 'input',
             name: 'name',
             message: 'What is the name of the engineer?',
-            validate: nameInput => {
-                if (nameInput) {
-                    return true;
-                } else {
-                    console.log('Please enter a name.');
-                    return false;
-                }
-            }
+            // validate: nameInput => {
+            //     if (nameInput) {
+            //         return true;
+            //     } else {
+            //         console.log('Please enter a name.');
+            //         return false;
+            //     }
+            // }
         },
         {
             type: 'number',
@@ -146,14 +146,14 @@ const internQuestions = () => {
             type: 'number',
             name: 'id',
             message: 'Please enter the employee ID.',
-            validate: idNumber => {
-                if (idNumber) {
-                    return true;
-                } else {
-                    console.log('Please enter an employee ID.');
-                    return false;
-                }
-            }
+            // validate: idNumber => {
+            //     if (idNumber) {
+            //         return true;
+            //     } else {
+            //         console.log('Please enter an employee ID.');
+            //         return false;
+            //     }
+            // }
         },
         {
             type: 'input',
@@ -184,3 +184,8 @@ const internQuestions = () => {
     ]);
     selectOption();
 };
+managerQuestions()
+    .then(selectOption)
+    .then(engineerQuestions)
+    .then(selectOption)
+    .then(internQuestions);

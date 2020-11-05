@@ -16,8 +16,8 @@ function makeManager () {
         name: 'managerName',
         message: "What is the manager's name?",
         validate: (managerNameInput) => {
-            if (managerNameInput === true) {
-                return this.managerName
+            if (managerNameInput) {
+                return true
             } else {
                 console.log("Please enter the manager's name.")
             }
@@ -27,8 +27,8 @@ function makeManager () {
         type: 'input',
         name: 'managerId',
         message: "Please enter the manager ID.",
-        validate: managerIdNumber => {
-            if (managerIdNumber === true) {
+        validate: managerIdInput => {
+            if (managerIdInput) {
                 return true;
             } else {
                 console.log('Please enter the manager ID.');
@@ -41,7 +41,7 @@ function makeManager () {
         name: 'managerEmail',
         message: "Please enter the manager's email.",
         validate: managerEmail => {
-            if (managerEmail === true) {
+            if (managerEmail) {
                 return true;
             } else {
                 console.log("Please enter the manager's email.")
@@ -50,11 +50,11 @@ function makeManager () {
         }
     },
     {
-        type: 'number',
+        type: 'input',
         name: 'managerOffice',
         message: 'Please enter the office number of the employee.',
-        validate: officeNumber => {
-            if (officeNumber === true) {
+        validate: officeInput => {
+            if (officeInput) {
                 return true;
             } else {
                 console.log('Please enter a valid office number.')
@@ -63,13 +63,13 @@ function makeManager () {
         }
     },
     ]).then(answers => {
-        const manager = new Manager(answers.managerName, answers.managerIdNumber, answers.managerEmail, answers.managerOffice)
+        const manager = new Manager(answers.managerName, answers.managerIdInput, answers.managerEmail, answers.managerOffice)
         team.push(manager);
         id.push(answers.managerIdNumber)
-        Menu()
+        menu()
     })
 
-function  makeEngineer() {
+function makeEngineer() {
     inquirer
     .prompt([
         {
@@ -77,7 +77,7 @@ function  makeEngineer() {
         name: 'engineerName',
         message: "What is the engineer's name?",
         validate: (engineerNameInput) => {
-            if (engineerNameInput === true) {
+            if (engineerNameInput) {
                 return this.engineerName
             } else {
                 console.log("Please enter the engineer's name.")
@@ -88,8 +88,8 @@ function  makeEngineer() {
         type: 'input',
         name: 'engineerId',
         message: "Please enter the engineer ID.",
-        validate: engineerIdNumber => {
-            if (engineerIdNumber === true) {
+        validate: engineerIdInput => {
+            if (engineerIdInput) {
                 return true;
             } else {
                 console.log('Please enter the engineer ID.');
@@ -102,7 +102,7 @@ function  makeEngineer() {
         name: 'engineerEmail',
         message: "Please enter the engineer's email.",
         validate: engineerEmail => {
-            if (engineerEmail === true) {
+            if (engineerEmail) {
                 return true;
             } else {
                 console.log("Please enter the engineer's email.")
@@ -114,8 +114,8 @@ function  makeEngineer() {
         type: 'input',
         name: 'engineerGithub',
         message: "Please enter the engineer's GitHub username.",
-        validate: enginnerGithubInput => {
-            if (enignnerGithubInput === true) {
+        validate: engineerGithubInput => {
+            if (engineerGithubInput) {
                 return true;
             } else {
                 console.log("Please enter the engineer's GitHub username.");
@@ -124,10 +124,10 @@ function  makeEngineer() {
             }
         },
     ]).then(answers => {
-        const engineer = new Engineer(answers.engineerName, answers.engineerIdNumber, answers.engineerEmail, answers.engineerGithub)
+        const engineer = new Engineer(answers.engineerName, answers.engineerIdInput, answers.engineerEmail, answers.engineerGithub)
         team.push(engineer);
         id.push(answers.engineerIdNumber)
-        Menu()
+        menu()
     })
 }
 function makeIntern() {
@@ -138,7 +138,7 @@ function makeIntern() {
         name: 'internName',
         message: "What is the intern's name?",
         validate: (internNameInput) => {
-            if (internNameInput === true) {
+            if (internNameInput) {
                 return this.internName
             } else {
                 console.log("Please enter the manager's name.")
@@ -149,8 +149,8 @@ function makeIntern() {
         type: 'input',
         name: 'internIdNumber',
         message: "Please enter the manager ID.",
-        validate: internIdNumber => {
-            if (internIdNumber === true) {
+        validate: internIdInput => {
+            if (internIdInput) {
                 return true;
             } else {
                 console.log("Please enter the intern's ID.");
@@ -163,7 +163,7 @@ function makeIntern() {
         name: 'internEmail',
         message: "Please enter the intern's email.",
         validate: internEmail => {
-            if (internEmail === true) {
+            if (internEmail) {
                 return true;
             } else {
                 console.log("Please enter the intern's email.")
@@ -176,7 +176,7 @@ function makeIntern() {
         name: 'internSchool',
         message: 'Please enter where the intern went to school',
         validate: internSchoolInput => {
-            if (internSchoolInput === true) {
+            if (internSchoolInput) {
                 return true;
             } else {
                 console.log('Please enter a school name.');
@@ -185,21 +185,21 @@ function makeIntern() {
         }
     }
     ]).then(answers => {
-        const intern = new Intern(answers.internName, answers.internIdNumber, answers.internEmail, answers.internSchool)
+        const intern = new Intern(answers.internName, answers.internIdInput, answers.internEmail, answers.internSchool)
         team.push(intern);
         id.push(answers.internIdNumber)
-        Menu()
+        menu()
     });
 }
 
-function Menu() {
+function menu() {
     inquirer
     .prompt({
             type: 'list',
             name: 'menu',
             choices: ['Add an engineer', 'Add an intern', 'Finished building my team']
     })
-    switch (menu) {
+    switch (menu.choices) {
         case 'Add an engineer':
             makeEngineer();
             break;
@@ -207,8 +207,9 @@ function Menu() {
             makeIntern();
             break;
         case 'Finished building my team':
-            console.log('Done')
+            console.log(team + "and"  + id)
             break;
         }
 } ;
 }
+makeManager()

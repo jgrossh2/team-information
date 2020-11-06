@@ -5,6 +5,8 @@ const Intern = require('./lib/Intern.js');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer.js');
 const { clear } = require('console');
+const { default: generateEmptyCoverage } = require('@jest/reporters/build/generateEmptyCoverage');
+const generatePage = require('./src/html-template.js');
 
 const team= [];
 const id = [];
@@ -18,9 +20,10 @@ function makeManager () {
         message: "What is the manager's name?",
         validate: (managerNameInput) => {
             if (managerNameInput) {
-                return true
+                return true;
             } else {
                 console.log("Please enter the manager's name.")
+                return false;
             }
         }
     },
@@ -65,10 +68,11 @@ function makeManager () {
     },
     ]).then(answers => {
         const manager = new Manager(answers.managerName, answers.managerEmail, answers.managerId, answers.managerOffice)
+        // console.log(answers.managerName, answers.managerEmail, answers.managerId, answers.managerOffice)
         team.push(manager);
         console.log(team)
         id.push(answers.managerId)
-        console.log(id)
+        // console.log(answers)
         menu()
     })
 
@@ -132,7 +136,7 @@ function makeEngineer() {
     ]).then(answers => {
         const engineer = new Engineer(answers.engineerName, answers.engineerEmail, answers.engineerIdNumber,  answers.engineerGithub)
         team.push(engineer);
-        console.log(team)
+        // console.log(team)
         id.push(answers.engineerIdNumber)
         console.log(id)
         menu()
@@ -220,9 +224,53 @@ function menu() {
                 case 'Finished building my team':
                     console.log(team + "and"  + id)
                     break;
-                    }
-            })
+                }
+                    
+    }) .then(team => {
+        console.log('here we go')
+        return generatePage(team);
+        
+        })
+    .then(pageHTML => {
+        return fs.writeFile(pageHTML);
+        })
+    .catch(err => {
+        console.log(err);
+    });
+    
+    
     }
 } ;
+const writeFile = fileContent => {
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./output/sample.html', fileContent, err => {
+            //if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
+            if (err) {
+                reject(err);
+                //return out of the function here to make sure the Promise doesn't accidentally execute the resolve() function as well
+                return;
+            }
 
-makeManager()
+            //if everything went well, resolve the Promise and send the successful data to the `.then()` method
+            resolve({
+                ok:true,
+                message: 'File created!'
+            });
+        });
+    });
+};
+// function init() {
+    makeManager()
+//     .then(team => {
+//         console.log('here we go')
+//         return generatePage(team);
+        
+//         })
+//     .then(pageHTML => {
+//         return fs.writeFile(pageHTML);
+//         })
+//     .catch(err => {
+//         console.log(err);
+//     });
+// };
+// init();

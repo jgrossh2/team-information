@@ -7,7 +7,7 @@ test('create school object of intern', () => {
 });
 
 test('gets school for intern', () => {
-    const intern = new Intern("Wisconsin");
+    const intern = new Intern();
 
     expect(intern.getSchool()).toEqual(expect.any(String));
 });

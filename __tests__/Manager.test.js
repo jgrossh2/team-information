@@ -2,7 +2,7 @@ const { test, expect } = require('@jest/globals');
 const Manager = require('../lib/Manager.js');
 
 test('create object for the officenumber of manager', () => {
-    const manager = new Manager ('Dave', 'fndjdja', '46466','12');
+    const manager = new Manager ('Dave', 'jay@jay.com', '46466','12');
     expect(manager.officeNumber).toBe('12');
 });
 test('get role of manager', () => {
@@ -10,6 +10,6 @@ test('get role of manager', () => {
     expect(manager.getRole()).toBe('Manager');
 });
 test('get office number of manager', () => {
-    const manager = new Manager('Dave', 'fndjdja', '46466','12');
+    const manager = new Manager('Dave', 'jay@jay.com', '46466','12');
     expect(manager.getOfficeNumber()).toEqual(expect.any(String));
 })

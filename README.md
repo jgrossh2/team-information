@@ -2,7 +2,7 @@
 
 ## Description
 
-Team Information application was created in order to organize a team of employees. The application starts with prompts for the manager's information, including name, ID, email, and office number. Then the user is directed to a menu of choices to either "add an engineer", "add an intern", or to generate the HTML team information file. Upon selecting "add an engineer", the user is prompted to enter the engineer's name, ID, email, and Github username. Upon selecting "add an intern", the user is prompted to enter the intern's name, ID, email, and school. The email and Github entries are displayed in the HTML as links to open and send an email, or view the Github profile, respectively. [screencastify Readme-generate](https://drive.google.com/file/d/1Nob_4kZyicROzRZaAwp0xqiwG8DA6afj/view).
+Team Information application was created in order to organize a team of employees. The application starts with prompts for the manager's information, including name, ID, email, and office number. Then the user is directed to a menu of choices to either "add an engineer", "add an intern", or to generate the HTML team information file. Upon selecting "add an engineer", the user is prompted to enter the engineer's name, ID, email, and Github username. Upon selecting "add an intern", the user is prompted to enter the intern's name, ID, email, and school. The email and Github entries are displayed in the HTML as links to open and send an email, or view the Github profile, respectively. Please watch the following video for demonstration of the application.[screencastify Readme-generate](https://drive.google.com/file/d/1Nob_4kZyicROzRZaAwp0xqiwG8DA6afj/view).
 
 ## Images 
 ![Readme](./images/readme.png) <br>

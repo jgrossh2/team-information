@@ -56,7 +56,7 @@ function makeManager () {
     {
         type: 'input',
         name: 'managerOffice',
-        message: 'Please enter the office number of the employee.(Required)',
+        message: 'Please enter the office number of the manager.(Required)',
         validate: managerOfficeInput => {
             if (managerOfficeInput) {
                 return true;

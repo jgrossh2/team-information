@@ -10,7 +10,6 @@ const { default: generateEmptyCoverage } = require('@jest/reporters/build/genera
 const generatePage = require('./src/html-template.js');
 
 const team= [];
-const id = [];
 
 function makeManager () {
     return inquirer
@@ -18,7 +17,7 @@ function makeManager () {
         {
         type: 'input',
         name: 'managerName',
-        message: "What is the manager's name?",
+        message: "What is the manager's name? (Required)",
         validate: (managerNameInput) => {
             if (managerNameInput) {
                 return true;
@@ -31,7 +30,7 @@ function makeManager () {
     {
         type: 'input',
         name: 'managerEmail',
-        message: "Please enter the manager's email.",
+        message: "Please enter the manager's email.(Required)",
         validate: managerEmailInput => {
             if (managerEmailInput) {
                 return true;
@@ -44,7 +43,7 @@ function makeManager () {
     {
         type: 'input',
         name: 'managerId',
-        message: "Please enter the manager ID.",
+        message: "Please enter the manager ID.(Required)",
         validate: managerIdInput => {
             if (managerIdInput) {
                 return true;
@@ -57,7 +56,7 @@ function makeManager () {
     {
         type: 'input',
         name: 'managerOffice',
-        message: 'Please enter the office number of the employee.',
+        message: 'Please enter the office number of the employee.(Required)',
         validate: managerOfficeInput => {
             if (managerOfficeInput) {
                 return true;
@@ -69,11 +68,8 @@ function makeManager () {
     },
     ]).then(answers => {
         const manager = new Manager(answers.managerName, answers.managerEmail, answers.managerId, answers.managerOffice)
-        // console.log(answers.managerName, answers.managerEmail, answers.managerId, answers.managerOffice)
         team.push(manager);
         console.log(team)
-        id.push(answers.managerId)
-        // console.log(answers)
         menu()
     })
 
@@ -83,7 +79,7 @@ function makeEngineer() {
         {
         type: 'input',
         name: 'engineerName',
-        message: "What is the engineer's name?",
+        message: "What is the engineer's name?(Required)",
         validate: (engineerNameInput) => {
             if (engineerNameInput) {
                 this.engineerName;
@@ -98,7 +94,7 @@ function makeEngineer() {
     {
         type: 'input',
         name: 'engineerEmail',
-        message: "Please enter the engineer's email.",
+        message: "Please enter the engineer's email. (Required)",
         validate: engineerEmailInput => {
             if (engineerEmailInput) {
                 return true;
@@ -111,7 +107,7 @@ function makeEngineer() {
     {
         type: 'input',
         name: 'engineerIdNumber',
-        message: "Please enter the engineer ID.",
+        message: "Please enter the engineer ID. (Required)",
         validate: engineerIdNumberInput => {
             if (engineerIdNumberInput) {
                 return true;
@@ -124,7 +120,7 @@ function makeEngineer() {
     {
         type: 'input',
         name: 'engineerGithub',
-        message: "Please enter the engineer's GitHub username.",
+        message: "Please enter the engineer's GitHub username. (Required)",
         validate: engineerGithubInput => {
             if (engineerGithubInput) {
                 return true;
@@ -138,8 +134,6 @@ function makeEngineer() {
         const engineer = new Engineer(answers.engineerName, answers.engineerEmail, answers.engineerIdNumber,  answers.engineerGithub)
         team.push(engineer);
         // console.log(team)
-        id.push(answers.engineerIdNumber)
-        console.log(id)
         menu()
     })
 }
@@ -149,7 +143,7 @@ function makeIntern() {
         {
         type: 'input',
         name: 'internName',
-        message: "What is the intern's name?",
+        message: "What is the intern's name? (Required)",
         validate: (internNameInput) => {
             if (internNameInput) {
                 return true;
@@ -162,7 +156,7 @@ function makeIntern() {
     {
         type: 'input',
         name: 'internEmail',
-        message: "Please enter the intern's email.",
+        message: "Please enter the intern's email. (Required)",
         validate: internEmailInput => {
             if (internEmailInput) {
                 return true;
@@ -175,7 +169,7 @@ function makeIntern() {
     {
         type: 'input',
         name: 'internIdNumber',
-        message: "Please enter the intern's ID.",
+        message: "Please enter the intern's ID. (Required)",
         validate: internIdNumberInput => {
             if (internIdNumberInput) {
                 return true;
@@ -188,7 +182,7 @@ function makeIntern() {
     {
         type: 'input',
         name: 'internSchool',
-        message: 'Please enter where the intern went to school',
+        message: 'Please enter where the intern went to school. (Required)',
         validate: internSchoolInput => {
             if (internSchoolInput) {
                 return true;
@@ -201,9 +195,6 @@ function makeIntern() {
     ]).then(answers => {
         const intern = new Intern(answers.internName,  answers.internEmail, answers.internIdNumber, answers.internSchool)
         team.push(intern);
-        console.log(team)
-        id.push(answers.internIdNumber)
-        console.log(id)
         menu()
     });
 }
@@ -223,38 +214,13 @@ function menu() {
                     makeIntern();
                     break;
                 case 'Finished building my team':
-                    console.log(team + "and"  + id)
-                    break;
+                    let fileContent = generatePage(team);
+                    // console.log("fileContent", fileContent)
+                    writeFile(fileContent);
+                    console.log("Your HTML has been created.")
                 }
-                    
-    }) .then(team => {
-        console.log('here we go')
-        return generatePage(team);
-        
         })
-    .then(pageHTML => {
-        return fs.writeFile(pageHTML);
-        })
-    .catch(err => {
-        console.log(err);
-    });
-    
-    
     }
 } ;
-// function init() {
-makeManager()
-    .then(menu())
-    .then(team => {
-        console.log('here we go')
-        return generatePage(team);
-        
-        })
-    .then(pageHTML => {
-        return fs.writeFile(pageHTML);
-        })
-    .catch(err => {
-        console.log(err);
-    });
 
-// init();
+makeManager()

@@ -5,7 +5,6 @@ const Engineer = require('../lib/Engineer.js');
 const generateHtml = require("../utils/generate-html");
 
 const generateHTML = employeeData => {
-    console.log("use:" + employeeData[0].name)
     return `
     <section class="my-3" id="portfolio">
         <div class="container layout">
@@ -13,13 +12,12 @@ const generateHTML = employeeData => {
             ${employeeData
             .filter ( employee => employee.getRole() === "Manager")
             .map(({ name, email, id, officeNumber }) => {
-                console.log("name", name)
                 return `
                 <div class="card col-sm outline" style="max-width: 18rem;">
                 <div class="card-header">${name}</div>
                 <div class="card-body text-dark">
                 <h5 class="card-title">Role: Manager</h5>
-                <a href="${email}">Email</a>
+                <a href="mailto:${email}">Email</a>
                 <p class="card-text">Id: ${id} </p>
                 <p class="card-text">Office Number: ${officeNumber}</p>
             </div>
@@ -35,9 +33,9 @@ const generateHTML = employeeData => {
                 <div class="card-header">${name}</div>
                 <div class="card-body text-dark">
                 <h5 class="card-title">Role: Engineer</h5>
-                <a href="${email}">Email</a>
+                <a href="mailto:${email}">Email</a>
                 <p class="card-text">Id: ${id} </p>
-                <a href="${github}">Github</a>
+                <a href="https://github.com/${github}" target="_blank">Github</a>
                 <a href="${github}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>View Project on Github</a>
             </div>
             </div>
@@ -52,7 +50,7 @@ const generateHTML = employeeData => {
                 <div class="card-header">${name}</div>
                 <div class="card-body text-dark">
                 <h5 class="card-title">Role: Intern</h5>
-                <a href="${email}">Email</a>
+                <a href="mailto:${email}">Email</a>
                 <p class="card-text">Id: ${id} </p>
                 <p class="card-text">School: ${school}</p>
             </div>

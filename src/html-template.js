@@ -47,7 +47,7 @@ const generateHTML = employeeData => {
                         <p class="list-group-item">ID: ${id}</p>
                         <p class="card-text"> Email: <a href="mailto:${email}">${email}</a></p>
                         </p>
-                        <p class="list-group-item"><a href="https://github.com/${github}" target="_blank">Github: ${github}</a></p>
+                        <p class="list-group-item">Github: <a href="https://github.com/${github}" target="_blank">${github}</a></p>
                     </ul>
                   </div>
             </div>

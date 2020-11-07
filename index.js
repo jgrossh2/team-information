@@ -69,7 +69,6 @@ function makeManager () {
     ]).then(answers => {
         const manager = new Manager(answers.managerName, answers.managerEmail, answers.managerId, answers.managerOffice)
         team.push(manager);
-        console.log(team)
         menu()
     })
 

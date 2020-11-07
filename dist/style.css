@@ -6,7 +6,6 @@
 }
 .name {
     padding: 10px;
-    
 }
 .fas {
     font-size: 24px;
@@ -25,20 +24,21 @@
 }
 .layout {
     display: flex;
-    justify-content: space-between;
+    flex-wrap:wrap;
+    justify-content: center;
     margin: auto;
 }
 .background {
-    background-color: lightblue;
+    background-color: blue;
 }
 .card-header {
     font-size: 26px;
     font-weight: bold;
+    color:white;
 
 }
 .card-title {
     font-size: 24px;
-
 }
 .card-body {
     font-size: 18px;

@@ -35,8 +35,7 @@ const generateHTML = employeeData => {
                 <h5 class="card-title">Role: Engineer</h5>
                 <a href="mailto:${email}">Email</a>
                 <p class="card-text">Id: ${id} </p>
-                <a href="https://github.com/${github}" target="_blank">Github</a>
-                <a href="${github}" class="btn mt-auto"><i class="fab fa-github mr-2"></i>View Project on Github</a>
+                <a href="https://github.com/${github}" target="_blank">View Github Profile</a>
             </div>
             </div>
                 `;
@@ -93,7 +92,7 @@ return `
         ${generateHTML(templateData)}
         </main>
         <footer class="container text-center py-3">
-            <h3 class="text-dark">&copy; ${new Date().getFullYear()} by Joanna Grosshans</h3>
+            <h3 class="text-dark none layout">&copy; ${new Date().getFullYear()} by Joanna Grosshans</h3>
         </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </body>

@@ -14,12 +14,19 @@ const generateHTML = employeeData => {
             .map(({ name, email, id, officeNumber }) => {
                 return `
                 <div class="card col-sm outline" style="max-width: 18rem;">
-                <div class="card-header">${name}</div>
+                <div class="card-header background"><span class="name">${name}</span>
+                <p class="card-header background"><span class="name"><i class="fas fa-mug-hot"></i>Role: Manager</span></p>
+                </div>
                 <div class="card-body text-dark">
-                <h5 class="card-title">Role: Manager</h5>
-                <a href="mailto:${email}">Email</a>
-                <p class="card-text">Id: ${id} </p>
-                <p class="card-text">Office Number: ${officeNumber}</p>
+                <div class="card border" style="width: 18rem;">
+                    <ul class="list-group list-group-flush">
+                        <p class="list-group-item">
+                        <p class="card-text"> Email: <a href="mailto:${email}">${email}</a></p>
+                        </p>
+                        <p class="list-group-item">Id: ${id}</p>
+                        <p class="list-group-item">Office Number: ${officeNumber}</p>
+                    </ul>
+                  </div>
             </div>
             </div>
                 `;
@@ -30,12 +37,19 @@ const generateHTML = employeeData => {
             .map(({ name, email, id, github }) => {
                 return `
                 <div class="card col-sm outline" style="max-width: 18rem;">
-                <div class="card-header">${name}</div>
+                <div class="card-header background"><span class="name">${name}</span>
+                <p class="card-header background"><span class="name"><i class="fas fa-glasses"></i>Role: Manager</span></p>
+                </div>
                 <div class="card-body text-dark">
-                <h5 class="card-title">Role: Engineer</h5>
-                <a href="mailto:${email}">Email</a>
-                <p class="card-text">Id: ${id} </p>
-                <a href="https://github.com/${github}" target="_blank">View Github Profile</a>
+                <div class="card border" style="width: 18rem;">
+                    <ul class="list-group list-group-flush">
+                        <p class="list-group-item">
+                        <p class="card-text"> Email: <a href="mailto:${email}">${email}</a></p>
+                        </p>
+                        <p class="list-group-item">Id: ${id}</p>
+                        <p class="list-group-item"><a href="https://github.com/${github}" target="_blank">Github: ${github}</a></p>
+                    </ul>
+                  </div>
             </div>
             </div>
                 `;
@@ -46,12 +60,19 @@ const generateHTML = employeeData => {
             .map(({ name, email, id, school }) => {
                 return `
                 <div class="card col-sm outline" style="max-width: 18rem;">
-                <div class="card-header">${name}</div>
+                <div class="card-header background"><span class="name">${name}</span>
+                <p class="card-header background"><span class="name"><i class="fas fa-user-graduate"></i>Role: Manager</span></p>
+                </div>
                 <div class="card-body text-dark">
-                <h5 class="card-title">Role: Intern</h5>
-                <a href="mailto:${email}">Email</a>
-                <p class="card-text">Id: ${id} </p>
-                <p class="card-text">School: ${school}</p>
+                <div class="card border" style="width: 18rem;">
+                    <ul class="list-group list-group-flush">
+                        <p class="list-group-item">
+                        <p class="card-text"> Email: <a href="mailto:${email}">${email}</a></p>
+                        </p>
+                        <p class="list-group-item">Id: ${id}</p>
+                        <p class="list-group-item">School: ${school}</p>
+                    </ul>
+                  </div>
             </div>
             </div>
                 `;
@@ -92,7 +113,7 @@ return `
         ${generateHTML(templateData)}
         </main>
         <footer class="container text-center py-3">
-            <h3 class="text-dark none layout">&copy; ${new Date().getFullYear()} by Joanna Grosshans</h3>
+            <h3 class="text-dark color none">&copy; ${new Date().getFullYear()} by Joanna Grosshans</h3>
         </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     </body>

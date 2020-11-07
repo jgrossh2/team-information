@@ -12,6 +12,9 @@
     font-size: 24px;
     padding-right: 10px;
 }
+.container {
+    width: 1292px;
+}
 .color {
     background-color: coral;
     color: black;

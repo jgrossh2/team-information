@@ -74,6 +74,10 @@ function makeManager () {
     })
 
 function makeEngineer() {
+    console.log(`
+    ===================
+    Add a new Engineer
+    ===================`);
     return inquirer
     .prompt([
         {
@@ -133,11 +137,14 @@ function makeEngineer() {
     ]).then(answers => {
         const engineer = new Engineer(answers.engineerName, answers.engineerEmail, answers.engineerIdNumber,  answers.engineerGithub)
         team.push(engineer);
-        // console.log(team)
         menu()
     })
 }
 function makeIntern() {
+    console.log(`
+    ===================
+    Add a new Intern
+    ===================`);
     return inquirer
     .prompt([
         {
@@ -215,7 +222,6 @@ function menu() {
                     break;
                 case 'Finished building my team':
                     let fileContent = generatePage(team);
-                    // console.log("fileContent", fileContent)
                     writeFile(fileContent);
                     console.log("Your HTML has been created.")
                 }

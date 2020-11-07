@@ -13,7 +13,7 @@ const generateHTML = employeeData => {
             .filter ( employee => employee.getRole() === "Manager")
             .map(({ name, email, id, officeNumber }) => {
                 return `
-                <div class="card col-sm outline" style="max-width: 18rem;">
+                <div class="card col outline" style="max-width: 18rem;">
                 <div class="card-header background"><span class="name">${name}</span>
                 <p class="card-header background"><span class="name"><i class="fas fa-mug-hot"></i>Role: Manager</span></p>
                 </div>
@@ -36,7 +36,7 @@ const generateHTML = employeeData => {
             .filter (employee => employee.getRole() === "Engineer")
             .map(({ name, email, id, github }) => {
                 return `
-                <div class="card col-sm outline" style="max-width: 18rem;">
+                <div class="card col outline" style="max-width: 18rem;">
                 <div class="card-header background"><span class="name">${name}</span>
                 <p class="card-header background"><span class="name"><i class="fas fa-glasses"></i>Role: Engineer</span></p>
                 </div>
@@ -59,7 +59,7 @@ const generateHTML = employeeData => {
             .filter (employee => employee.getRole() === "Intern")
             .map(({ name, email, id, school }) => {
                 return `
-                <div class="card col-sm outline" style="max-width: 18rem;">
+                <div class="card col outline" style="max-width: 18rem;">
                 <div class="card-header background"><span class="name">${name}</span>
                 <p class="card-header background"><span class="name"><i class="fas fa-user-graduate"></i>Role: Intern</span></p>
                 </div>
@@ -86,7 +86,6 @@ const generateHTML = employeeData => {
 
 
 module.exports = templateData => {
-console.log("generating", generateHTML(templateData))
 
 return `
 <!DOCTYPE html>
@@ -99,7 +98,7 @@ return `
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
         <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
-        <title>Team Information</title>
+        <title>My Team</title>
     </head>
 
     <body>
@@ -115,7 +114,9 @@ return `
         <footer class="container text-center py-3">
             <h3 class="text-dark color none">&copy; ${new Date().getFullYear()} by Joanna Grosshans</h3>
         </footer>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
     </html>
     `;

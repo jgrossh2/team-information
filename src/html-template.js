@@ -21,9 +21,9 @@ const generateHTML = employeeData => {
                 <div class="card border" style="width: 18rem;">
                     <ul class="list-group list-group-flush">
                         <p class="list-group-item">
+                        <p class="list-group-item">ID: ${id}</p>
                         <p class="card-text"> Email: <a href="mailto:${email}">${email}</a></p>
                         </p>
-                        <p class="list-group-item">Id: ${id}</p>
                         <p class="list-group-item">Office Number: ${officeNumber}</p>
                     </ul>
                   </div>
@@ -38,15 +38,15 @@ const generateHTML = employeeData => {
                 return `
                 <div class="card col-sm outline" style="max-width: 18rem;">
                 <div class="card-header background"><span class="name">${name}</span>
-                <p class="card-header background"><span class="name"><i class="fas fa-glasses"></i>Role: Manager</span></p>
+                <p class="card-header background"><span class="name"><i class="fas fa-glasses"></i>Role: Engineer</span></p>
                 </div>
                 <div class="card-body text-dark">
                 <div class="card border" style="width: 18rem;">
                     <ul class="list-group list-group-flush">
                         <p class="list-group-item">
+                        <p class="list-group-item">ID: ${id}</p>
                         <p class="card-text"> Email: <a href="mailto:${email}">${email}</a></p>
                         </p>
-                        <p class="list-group-item">Id: ${id}</p>
                         <p class="list-group-item"><a href="https://github.com/${github}" target="_blank">Github: ${github}</a></p>
                     </ul>
                   </div>
@@ -61,15 +61,15 @@ const generateHTML = employeeData => {
                 return `
                 <div class="card col-sm outline" style="max-width: 18rem;">
                 <div class="card-header background"><span class="name">${name}</span>
-                <p class="card-header background"><span class="name"><i class="fas fa-user-graduate"></i>Role: Manager</span></p>
+                <p class="card-header background"><span class="name"><i class="fas fa-user-graduate"></i>Role: Intern</span></p>
                 </div>
                 <div class="card-body text-dark">
                 <div class="card border" style="width: 18rem;">
                     <ul class="list-group list-group-flush">
                         <p class="list-group-item">
+                        <p class="list-group-item">ID: ${id}</p>
                         <p class="card-text"> Email: <a href="mailto:${email}">${email}</a></p>
                         </p>
-                        <p class="list-group-item">Id: ${id}</p>
                         <p class="list-group-item">School: ${school}</p>
                     </ul>
                   </div>

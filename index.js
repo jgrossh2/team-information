@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const { writeFile, copyFile } = require('./utils/generate-html');
 const Employee = require('./lib/Employee.js');
 const Intern = require('./lib/Intern.js');
 const Manager = require('./lib/Manager');
@@ -12,7 +13,7 @@ const team= [];
 const id = [];
 
 function makeManager () {
-    inquirer
+    return inquirer
     .prompt([
         {
         type: 'input',
@@ -77,7 +78,7 @@ function makeManager () {
     })
 
 function makeEngineer() {
-    inquirer
+    return inquirer
     .prompt([
         {
         type: 'input',
@@ -143,7 +144,7 @@ function makeEngineer() {
     })
 }
 function makeIntern() {
-    inquirer
+    return inquirer
     .prompt([
         {
         type: 'input',
@@ -208,7 +209,7 @@ function makeIntern() {
 }
 
 function menu() {
-    inquirer
+    return inquirer
     .prompt({
             type: 'list',
             name: 'menu',
@@ -241,36 +242,19 @@ function menu() {
     
     }
 } ;
-const writeFile = fileContent => {
-    return new Promise((resolve, reject) => {
-        fs.writeFile('./output/sample.html', fileContent, err => {
-            //if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
-            if (err) {
-                reject(err);
-                //return out of the function here to make sure the Promise doesn't accidentally execute the resolve() function as well
-                return;
-            }
-
-            //if everything went well, resolve the Promise and send the successful data to the `.then()` method
-            resolve({
-                ok:true,
-                message: 'File created!'
-            });
-        });
-    });
-};
 // function init() {
-    makeManager()
-//     .then(team => {
-//         console.log('here we go')
-//         return generatePage(team);
+makeManager()
+    .then(menu())
+    .then(team => {
+        console.log('here we go')
+        return generatePage(team);
         
-//         })
-//     .then(pageHTML => {
-//         return fs.writeFile(pageHTML);
-//         })
-//     .catch(err => {
-//         console.log(err);
-//     });
-// };
+        })
+    .then(pageHTML => {
+        return fs.writeFile(pageHTML);
+        })
+    .catch(err => {
+        console.log(err);
+    });
+
 // init();

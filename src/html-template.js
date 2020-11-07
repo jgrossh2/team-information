@@ -3,20 +3,19 @@ const Intern = require('../lib/Intern.js');
 const Manager = require('../lib/Manager');
 const Engineer = require('../lib/Engineer.js');
 
-const generateHTML = team => {
-    console.log(team)
+const generateHTML = employees => {
     return `
     <section class="my-3" id="portfolio">
             <h2 class="text-dark bg-primary p-2 display-inline-block">Work</h2>
             <div class="flex-row justify-space-between">
-            ${team
+            ${employees
             .filter (({ Manager }) => Manager)
             .map(({ name, email, id, officeNumber }) => {
                 return `
                 <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
                 <h3 class="portfolio-item-title text-light">${name}</h3>
                 <h5 class="portfolio-languages">
-                        
+                <p> Role: Manager </p>
                 <a href="${email}">Jon Doe</a>
                 <p> Id:${id}</p>
                 <p> Office Number:${officeNumber}</p>
@@ -27,14 +26,14 @@ const generateHTML = team => {
                 `;
             })
             }
-            ${team
+            ${employees
             .filter (({ Engineer }) => Engineer)
             .map(({ name, email, id, github }) => {
                 return `
                 <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
                 <h3 class="portfolio-item-title text-light">${name}</h3>
                 <h5 class="portfolio-languages">
-                        
+                        <p> Role: Engineer</p>
                         <a href="${email}">Jon Doe</a>
                         <p> Id:${id}</p>
                     </h5>
@@ -44,14 +43,14 @@ const generateHTML = team => {
                 `;
         })
         }
-        ${team
+        ${employees
             .filter (({ Intern }) => Intern)
             .map(({ name, email, id, school }) => {
                 return `
                 <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
                 <h3 class="portfolio-item-title text-light">${name}</h3>
                 <h5 class="portfolio-languages">
-                        
+                <p> Role: Intern</p>
                 <a href="${email}">Jon Doe</a>
                 <p> Id:${id}</p>
                 <p> School: ${school}</p>
